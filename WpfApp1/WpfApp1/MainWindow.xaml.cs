@@ -42,3 +42,16 @@ namespace MastermindGame
             // MasterMind-02: Toon de gegenereerde code in de titel van het venster (voor testdoeleinden)
             Title = $"Mastermind - Code: {string.Join(", ", _generatedCode)}";
         }
+
+        // MasterMind-04: Wanneer er een kleur gekozen wordt uit een ComboBox, toon de kleur in het label
+        private void OnColorSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is string selectedColor)
+            {
+                // Map de ComboBox naar het bijbehorende Label om de geselecteerde kleur weer te geven
+                if (comboBox == ComboBox1) Label1.Content = selectedColor;
+                if (comboBox == ComboBox2) Label2.Content = selectedColor;
+                if (comboBox == ComboBox3) Label3.Content = selectedColor;
+                if (comboBox == ComboBox4) Label4.Content = selectedColor;
+            }
+        }
