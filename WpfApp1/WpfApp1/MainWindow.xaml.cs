@@ -37,4 +37,8 @@ namespace MastermindGame
             ComboBox4.ItemsSource = _colors;
 
             // Genereer een willekeurige code van 4 kleuren
-            _generatedCode = GenerateRandomCode();
+            _generatedCode = GenerateRandomCode(); ;
+
+            // MasterMind-02: Toon de gegenereerde code in de titel van het venster (voor testdoeleinden)
+            Title = $"Mastermind - Code: {string.Join(", ", _generatedCode)}";
+        }
