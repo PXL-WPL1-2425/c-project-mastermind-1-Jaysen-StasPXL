@@ -55,3 +55,42 @@ namespace MastermindGame
                 if (comboBox == ComboBox4) Label4.Content = selectedColor;
             }
         }
+
+        // MasterMind-05: Controleer de ingegeven code wanneer de gebruiker op de knop klikt
+        private void CheckCode(object sender, RoutedEventArgs e)
+        {
+            // Verkrijg de geselecteerde kleuren uit de ComboBoxen
+            var guesses = new[] {
+                ComboBox1.SelectedItem as string,
+                ComboBox2.SelectedItem as string,
+                ComboBox3.SelectedItem as string,
+                ComboBox4.SelectedItem as string
+            };
+
+            var labels = new[] { Label1, Label2, Label3, Label4 };
+
+            // Loop door elke ComboBox en vergelijk de keuzes met de gegenereerde code
+            for (int i = 0; i < 4; i++)
+            {
+                if (guesses[i] == null) continue;  // Sla over als geen kleur geselecteerd is
+
+                // Controleer of de gok correct is en handel de randkleur af
+                if (guesses[i] == _generatedCode[i])
+                {
+                    labels[i].BorderBrush = Brushes.DarkRed;  // Correcte kleur en positie
+                    labels[i].BorderThickness = new Thickness(2);  // Stel randdikte in
+                }
+                else if (_generatedCode.Contains(guesses[i]))
+                {
+                    labels[i].BorderBrush = Brushes.Wheat;  // Correcte kleur, verkeerde positie
+                    labels[i].BorderThickness = new Thickness(2);  // Stel randdikte in
+                }
+                else
+                {
+                    labels[i].BorderBrush = Brushes.Black;  // Onjuiste kleur
+                    labels[i].BorderThickness = new Thickness(1);  // Stel randdikte in
+                }
+            }
+        }
+    }
+}
