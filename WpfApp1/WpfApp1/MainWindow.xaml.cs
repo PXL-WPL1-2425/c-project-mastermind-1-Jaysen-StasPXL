@@ -26,3 +26,15 @@ namespace MastermindGame
                              .Select(_ => _colors[random.Next(_colors.Length)])
                              .ToArray();
         }
+
+        // MasterMind-03: Vul de ComboBoxen met de beschikbare kleuren
+        private void InitializeGame()
+        {
+            // Vul de ComboBoxen met de 6 beschikbare kleuren
+            ComboBox1.ItemsSource = _colors;
+            ComboBox2.ItemsSource = _colors;
+            ComboBox3.ItemsSource = _colors;
+            ComboBox4.ItemsSource = _colors;
+
+            // Genereer een willekeurige code van 4 kleuren
+            _generatedCode = GenerateRandomCode();
