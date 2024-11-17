@@ -18,4 +18,11 @@ namespace MastermindGame
             InitializeGame();
         }
 
-        
+        // MasterMind-02: Genereer een willekeurige code van 4 kleuren
+        private string[] GenerateRandomCode()
+        {
+            var random = new Random();
+            return Enumerable.Range(0, 4)
+                             .Select(_ => _colors[random.Next(_colors.Length)])
+                             .ToArray();
+        }
